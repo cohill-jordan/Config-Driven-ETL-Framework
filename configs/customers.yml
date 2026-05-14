@@ -1,0 +1,18 @@
+source:
+  type: s3_csv
+  path: s3://raw/customers/
+
+target:
+  type: postgres
+  table: customers
+
+mappings:
+  - source: customer_id
+    target: customer_key
+    datatype: integer
+  
+  - source: created_at
+    target: created_date
+    datatype: timestamp
+    transform: to_date
+    
